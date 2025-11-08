@@ -106,10 +106,12 @@ for %%a in (
     REM ""             REM 无说明未测试
 ) do (
     adb shell pm uninstall --user 0 %%a
+    echo %%a
 )
 
 echo "精简成功，请重启电视！"
 
 
 @pause
+
 
