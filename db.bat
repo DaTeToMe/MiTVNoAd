@@ -1,129 +1,115 @@
 @echo off
 cd /d "%~dp0"
 
-echo ÇëÊäÈëµçÊÓIPµØÖ·
-set /p ip=ÇëÊäÈëµçÊÓµÄIP:
+echo è¯·è¾“å…¥ç”µè§†IPåœ°å€
+set /p ip=è¯·è¾“å…¥ç”µè§†çš„IP:
 
-echo ÕıÔÚÁ¬½Ó£¬ÇëÉÔºó
+echo æ­£åœ¨è¿æ¥ï¼Œè¯·ç¨å
 set matchStr=connected
 :connect
 for /f "tokens=*" %%i in ('%~dp0adb connect %ip%') do @set  result=%%i
 
-echo %result% | findstr %matchStr% >nul && (echo Á¬½Ó³É¹¦) || (echo Á¬½ÓÊ§°Ü£¬ÕıÔÚÖØÊÔ
+echo %result% | findstr %matchStr% >nul && (echo è¿æ¥æˆåŠŸ) || (echo è¿æ¥å¤±è´¥ï¼Œæ­£åœ¨é‡è¯•
   (goto connect))
 
 set  installResult=Success
 
 :installDangbei
 
-echo µ±±´×ÀÃæ3.24ÆÆ½â°æ°²×°ÖĞ£¬ÇëÉÔºó
+echo å½“è´æ¡Œé¢3.24ç ´è§£ç‰ˆå®‰è£…ä¸­ï¼Œè¯·ç¨å
 for /f "tokens=*" %%i in ('%~dp0adb install launcher148.apk') do @set  installMessage=%%i
 echo in=%installMessage%
 
-echo %installMessage% | findstr %installResult% >nul && (echo °²×°³É¹¦) || (echo °²×°Ê§°Ü£¬ÕıÔÚÖØÊÔ
+echo %installMessage% | findstr %installResult% >nul && (echo å®‰è£…æˆåŠŸ) || (echo å®‰è£…å¤±è´¥ï¼Œæ­£åœ¨é‡è¯•
   (goto installDangbei))
 
-echo ÕıÔÚ¾«¼òÖĞ£¬ÄÍĞÄµÈ´ı¡£¡£¡£
+echo æ­£åœ¨ç²¾ç®€ä¸­ï¼Œè€å¿ƒç­‰å¾…ã€‚ã€‚ã€‚
 
-ECHO  É¾³ı-¹ã¸æ³ÌĞò1-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.upgrade
-ECHO  É¾³ı-¹ã¸æ³ÌĞò1-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ğ¡Ã×ÕÊºÅ-
-adb shell pm uninstall --user 0 com.xiaomi.account
-ECHO  É¾³ı-Ğ¡Ã×ÕÊºÅ-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-droidlogicÏµÍ³-
-adb shell pm uninstall --user 0 com.droidlogic
-ECHO  É¾³ı-droidlogicÏµÍ³-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ğ¡Ã×Ö§¸¶-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.payment
-ECHO  É¾³ı-Ğ¡Ã×Ö§¸¶-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-µçÊÓÖ§¸¶-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.pay
-ECHO  É¾³ı-µçÊÓÖ§¸¶-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ó¦ÓÃ¸üĞÂ-
-adb shell pm uninstall --user 0 com.xiaomi.tv.appupgrade
-ECHO  É¾³ı-Ó¦ÓÃ¸üĞÂ-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-VPN-
-adb shell pm uninstall --user 0 com.android.vpndialogs
-ECHO  É¾³ı-VPN-Íê³É£¡
-ECHO.
-ECHO  É¾³ı -µçÊÓÍÆËÍ-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.tvpush.tvpushservice
-ECHO  É¾³ı-µçÊÓÍÆËÍ-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ğ¡Ã×ÕÊºÅÊÚÈ¨-
-adb shell pm uninstall --user 0 com.xiaomi.account.auth
-ECHO  É¾³ı-Ğ¡Ã×ÕÊºÅÊÚÈ¨-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Í³¼Æ-
-adb shell pm uninstall --user 0 com.xiaomi.statistic
-ECHO  É¾³ı-Í³¼Æ-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ğ¡Ã×Ç®°ü-
-adb shell pm uninstall --user 0 com.mipay.wallet.tv
-ECHO  É¾³ı-Ğ¡Ã×Ç®°ü-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ã×¼Ò-
-adb shell pm uninstall --user 0 com.xiaomi.smarthome.tv
-ECHO  É¾³ı-Ã×¼Ò-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ó¦ÓÃÉÌµê-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.appstore
-ECHO  É¾³ı-Ó¦ÓÃÉÌµê-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-ÒôÏìÇ°¶Ë-
-adb shell pm uninstall --user 0 com.mi.umifrontend
-ECHO  É¾³ı-ÒôÏìÇ°¶Ë-Íê³É£¡
-ECHO.
-adb shell pm uninstall --user 0 com.android.proxyhandler
-ECHO  É¾³ı-´úÀí-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-¹ã¸æÓ¦ÓÃ-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.advertise
-ECHO  É¾³ı-¹ã¸æÓ¦ÓÃ-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Ò»Ìå»¯Î»ÖÃĞÅÏ¢-
-adb shell pm uninstall --user 0 com.android.location.fused
-ECHO  É¾³ı-Ò»Ìå»¯Î»ÖÃĞÅÏ¢-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-Â¼ÆÁ-
-adb shell pm uninstall --user 0 com.xiaomi.screenrecorder
-ECHO  É¾³ı-Â¼ÆÁ-Íê³É£¡
-ECHO.
-ECHO  É¾³ı-È¥³ı¿ª»ú¹ã¸æ-
-adb shell pm uninstall --user 0 com.miui.systemAdSolution
-ECHO  É¾³ı-È¥³ı¿ª»ú¹ã¸æ-Íê³É£¡
-ECHO  É¾³ı-Ğ¡Ã××ÀÃæ-
-adb shell pm uninstall --user 0 com.mitv.tvhome
-ECHO. É¾³ı-Ğ¡Ã××ÀÃæ-Íê³É£¡ 
-ECHO.
-ECHO  É¾³ı <Ïà²á>
-adb shell pm uninstall --user 0 com.mitv.gallery
-ECHO  É¾³ı</Ïà²á>Íê³É£¡
-ECHO.
+echo æ­£åœ¨ç²¾ç®€ä¸­ï¼Œè€å¿ƒç­‰å¾…ã€‚ã€‚ã€‚
 
-ECHO  É¾³ı-ÉÌ³Ç-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.shop
-ECHO  É¾³ı-ÉÌ³Ç-Íê³É£¡
-ECHO.
 
-ECHO  É¾³ı-Í·ÌõÊÓÆµ-
-adb shell pm uninstall --user 0 com.duokan.airkan.tvbox
-adb shell pm uninstall --user 0 com.duokan.videodaily
-ECHO  É¾³ı-Í·ÌõÊÓÆµ-Íê³É£¡
-ECHO.
+REM ä»¥ä¸‹æ˜¯è¦å¸è½½çš„åº”ç”¨ç¨‹åºåˆ—è¡¨
+for %%a in (
+    "com.xm.webcontent"                 REM ç”µè§†æ´»åŠ¨ä¸­å¿ƒ
+    "com.sogou.speech.offlineservice"   REM æœç‹—ç¦»çº¿è¯­éŸ³è¯†åˆ«å¼•æ“
+    "com.xiaomi.tweather"               REM å¤©æ°”
+    REM "com.xiaomi.mimusic2"               REM æœ¬åœ°éŸ³ä¹æ’­æ”¾å™¨
+    REM "com.mitv.videoplayer"              REM å°ç±³TVæ’­æ”¾å™¨
+    "com.android.providers.downloads"   REM ä¸‹è½½ç®¡ç†ç¨‹åº
+    "com.xiaomi.mitv.handbook"          REM ç”¨æˆ·æ‰‹å†Œ
+    "com.android.certinstaller"         REM è¯ä¹¦å®‰è£…
+    "com.android.captiveportallogin"    REM wifiè®¤è¯
+    "com.mitv.appstore.component.land"  REM åº”ç”¨å•†åº—å†…å®¹land
+    REM "com.xiaomi.mitv.tvmanager"         REM ç”µè§†ç®¡å®¶
+    "com.mitv.alarmcenter"              REM å®šæ—¶æé†’
+    "com.xiaomi.mitv.calendar"          REM æ—¥å†
+    "com.mitv.gallery"                  REM ç›¸å†Œ
+    "com.xiaomi.gamecenter.sdk.service.mibox"  REM å°ç±³æœåŠ¡å®‰å…¨æ’ä»¶
+    "com.mitv.care"                     REM adcare
+    "com.xiaomi.mitv.karaoke.service"   REM å¡æ‹‰OKæœåŠ¡
+    "com.xiaomi.miplay"                 REM MIOTHOST
+    "com.xiaomi.mibox.gamecenter"       REM æ¸¸æˆä¸­å¿ƒ
+    "com.xiaomi.mitv.upgrade"           REM ç³»ç»Ÿæ›´æ–°
+    "com.xiaomi.account"                REM å°ç±³å¸å·
+    "com.droidlogic"                    REM droidlogicç³»ç»Ÿ
+    "com.xiaomi.mitv.payment"           REM å°ç±³æ”¯ä»˜
+    "com.xiaomi.mitv.pay"               REM ç”µè§†æ”¯ä»˜
+    "com.xiaomi.tv.appupgrade"          REM åº”ç”¨æ›´æ–°
+    "com.xiaomi.mitv.tvpush.tvpushservice"  REM ç”µè§†æ¨é€
+    "com.xiaomi.account.auth"           REM å°ç±³å¸å·æˆæƒ
+    "com.xiaomi.statistic"               REM ç»Ÿè®¡
+    "com.mipay.wallet.tv"               REM å°ç±³é’±åŒ…
+    "com.xiaomi.smarthome.tv"           REM ç±³å®¶
+    "com.xiaomi.mitv.appstore"          REM åº”ç”¨å•†åº—
+    "com.miui.tv.analytics"             REM åˆ†æ
+    "com.xiaomi.mitv.shop"              REM å°ç±³å•†åŸ
+    "com.xiaomi.devicereport"           REM è®¾å¤‡æŠ¥å‘Š
+    "com.xiaomi.mibox.lockscreen"       REM é”å±
+    "com.mi.umi"                        REM å°ç±³éŸ³å“æœåŠ¡
+    "com.mi.umifrontend"                REM éŸ³å“å‰ç«¯
+    "com.android.proxyhandler"          REM ä»£ç†
+    "com.xiaomi.mitv.advertise"         REM å¹¿å‘Šåº”ç”¨
+    "com.android.location.fused"        REM ä¸€ä½“åŒ–ä½ç½®ä¿¡æ¯
+    "com.xiaomi.screenrecorder"         REM å½•å±
+    "com.miui.systemAdSolution"         REM å»é™¤å¼€æœºå¹¿å‘Š
+    "com.xiaomi.tv.gallery"             REM æ—¶å°šç”»æŠ¥
+    "com.duokan.videodaily"             REM ä»Šæ—¥å¤´å±
+    REM ä¸å»ºè®®åˆ é™¤åº”ç”¨
+    REM "com.mitv.screensaver"              REM æ™ºèƒ½å±ä¿
+    REM "com.android.packageinstaller"      REM è½¯ä»¶åŒ…å®‰è£…ç¨‹åº
+    REM "com.sohu.inputmethod.sogou.tv"     REM æœç‹—è¾“å…¥æ³•
+    REM "com.mitv.mivideoplayer"            REM å°ç±³ç”µè§†æ’­æ”¾å™¨
+    REM "com.pacprocessor"                  REM pacprocessor
+    REM "com.xiaomi.mitv.mediaexplorer"     REM é«˜æ¸…æ’­æ”¾å™¨
+    REM "com.android.bluetooth"             REM è“ç‰™å…±äº«
+    REM "com.xiaomi.mitv.tvplayer"          REM æ¨¡æ‹Ÿç”µè§†
+    REM "com.xiaomi.upnp"                   REM upnp
+    REM "com.xiaomi.mitv.smartshare"        REM æ— çº¿æŠ•å±
+    REM "com.xiaomi.milink.udt"             REM ç±³è”
+    REM "com.mi.miplay.mitvupnpsink"        REM upnpapp
+    REM "com.xiaomi.dlnatvservice"          REM DLNAè¿æ¥
+    REM "com.xiaomi.mitv.assistant.manual"   REM æŠ•å±ç¥å™¨
+    REM "com.duokan.airkan.tvbox"           REM milinkæœåŠ¡
+    REM "com.android.statementservice"      REM AppLinksåŠŸèƒ½
+    REM "com.mitv.tvhome"                   REM æ¡Œé¢
+    REM "mitv.service"                      REM æ— è¯´æ˜æœªæµ‹è¯•   å¯èƒ½ä¸ºå¼€æœºå¹¿å‘Š
+    REM "com.xiaomi.mitv.service"           REM æ— è¯´æ˜æœªæµ‹è¯•
+    REM "com.mitv.codec.update"             REM æ— è¯´æ˜æœªæµ‹è¯•
+    REM "com.mitv.shoplugin"             REM æ— è¯´æ˜æœªæµ‹è¯•
+    REM "com.xiaomi.mitv.providers.settings"             REM æ— è¯´æ˜æœªæµ‹è¯•
+    REM "com.xiaomi.mitv.legal.webview"             REM æ— è¯´æ˜æœªæµ‹è¯•
+    "com.android.vpndialogs"             REM VPN
+    REM "com.xiaomi.mitv.remotecontroller.service"             REM æ— è¯´æ˜æœªæµ‹è¯•
+    REM "com.gitvdemo.video"             REM æ— è¯´æ˜æœªæµ‹è¯•
+    "com.xiaomi.smarthome.tv.service"             REM ç±³å®¶æœåŠ¡
+    REM ""             REM æ— è¯´æ˜æœªæµ‹è¯•
+    REM ""             REM æ— è¯´æ˜æœªæµ‹è¯•
+    REM ""             REM æ— è¯´æ˜æœªæµ‹è¯•
+) do (
+    adb shell pm uninstall --user 0 %%a
+)
 
-ECHO  É¾³ı-ÓÃ»§ÊÖ²á-
-adb shell pm uninstall --user 0 com.xiaomi.mitv.handbook
-ECHO  É¾³ı-ÓÃ»§ÊÖ²á-Íê³É£¡
-ECHO.
+echo "ç²¾ç®€æˆåŠŸï¼Œè¯·é‡å¯ç”µè§†ï¼"
 
-echo "¾«¼ò³É¹¦£¬ÇëÖØÆôµçÊÓ£¡"
 
 @pause
