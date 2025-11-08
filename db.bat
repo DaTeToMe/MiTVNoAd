@@ -14,12 +14,12 @@ echo %result% | findstr %matchStr% >nul && (echo 连接成功) || (echo 连接�
 
 set installResult=Success
 
-:installDangbei
-echo 当贝桌面3.24破解版安装中，请稍后
-for /f "tokens=*" %%i in ('%~dp0adb install launcher148.apk') do @set  installMessage=%%i
-echo 安装信息：%installMessage%
-echo %installMessage% | findstr %installResult% >nul && (echo 安装成功) || (echo 安装失败，正在重试
-  goto installDangbei)
+REM :installDangbei
+REM echo 当贝桌面3.24破解版安装中，请稍后
+REM for /f "tokens=*" %%i in ('%~dp0adb install launcher148.apk') do @set  installMessage=%%i
+REM echo 安装信息：%installMessage%
+REM echo %installMessage% | findstr %installResult% >nul && (echo 安装成功) || (echo 安装失败，正在重试
+  REM goto installDangbei)
 
 echo 正在精简中，耐心等待。。。
 echo.
