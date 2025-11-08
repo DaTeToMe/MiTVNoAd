@@ -25,7 +25,6 @@ echo %installMessage% | findstr %installResult% >nul && (echo 安装成功) || (
 
 echo 正在精简中，耐心等待。。。
 
-echo 正在精简中，耐心等待。。。
 
 
 REM 以下是要卸载的应用程序列表
@@ -113,3 +112,4 @@ echo "精简成功，请重启电视！"
 
 
 @pause
+
